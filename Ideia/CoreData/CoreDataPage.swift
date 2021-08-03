@@ -22,6 +22,7 @@ class CoreDataStackPage {
     static func createPage(pageImage: String, note: Note) throws -> Page{
        // guard let page = NSEntityDescription.insertNewObject(forEntityName: "Page", into: context) as? Page else {preconditionFailure()}
         let page = Page(context: context)
+        
         page.pageImage = pageImage
         note.addToPages(page)
         try saveContext()

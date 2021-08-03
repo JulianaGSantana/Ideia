@@ -10,8 +10,13 @@ import Foundation
 
 class PaCollectionCell: UICollectionViewCell {
     @IBOutlet weak var background: UIView!
-    
+    @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var image: UIImageView!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        photoImage.image = nil
+    }
     }
     
 

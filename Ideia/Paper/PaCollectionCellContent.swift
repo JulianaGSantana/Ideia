@@ -9,10 +9,12 @@ import UIKit
 
 class PaCollectionCellContent{
     var image: UIImage
+  
    // var contentPage: UIImage
     
    init(image:UIImage){
     self.image = image
+  
    // self.contentPage = contentPage
     }
 }

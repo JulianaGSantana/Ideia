@@ -2,7 +2,7 @@
 //  Page+CoreDataProperties.swift
 //  Ideia
 //
-//  Created by Juliana Santana on 29/07/21.
+//  Created by Juliana Santana on 02/08/21.
 //
 //
 
@@ -17,6 +17,7 @@ extension Page {
     }
 
     @NSManaged public var pageImage: String?
+    @NSManaged public var photoImage: String?
     @NSManaged public var note: Note?
 
 }

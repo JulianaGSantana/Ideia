@@ -8,12 +8,16 @@
 import UIKit
 import Photos
 
-class ImageViewController: UIViewController, UIContextMenuInteractionDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+protocol imageViewControllerDelegate: AnyObject {
+    func didSave()
+}
+
+class ImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    //UIContextMenuInteractionDelegate
     
-    
+    weak var delegate: imageViewControllerDelegate?
     //botão de voltar e context menu
     @IBOutlet weak var voltarButton: UIButton!
-    @IBOutlet weak var goToCamButton: UIButton!
     @IBOutlet weak var activePhotoButton: UIButton!
     
     //camera/galeria
@@ -24,14 +28,49 @@ class ImageViewController: UIViewController, UIContextMenuInteractionDelegate, U
     
     //parte da permissão e uso da camera ou galeria
     var imagePickerController = UIImagePickerController()
+    var coreDataNote: Note?
+    var coreDataPage: Page?
+    var nomeDaImagem: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
         checkPermissions()
+        
+    // UIMenu
+        //activePhotoButton.addAction(UIAction(title: "", handler: { (_) in
+        //    print("Default Action")
+       // }), for: .touchUpInside)
+        activePhotoButton.showsMenuAsPrimaryAction = true
+        activePhotoButton.menu = addMenuItems()
+        
+        if let path = coreDataPage?.photoImage, let image = UIImage(contentsOfFile: FileHelper.GetFilePath(fileName: path)) {
+            self.image.image = image
+        }
+        
+        
+        
 }
     
-    @IBAction func tappedCameraButton(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
+        if let coreDataPage = self.coreDataPage{
+            if let path = coreDataPage.photoImage, let image = UIImage(contentsOfFile: FileHelper.GetFilePath(fileName: path)) {
+                  self.image.image = image
+        }
+    }
+    }
+    //func addMenuItems in UIMenu
+    func addMenuItems() -> UIMenu {
+        let menuItems = UIMenu(title: "", options: .displayInline, children: [
+            UIAction(title: "Gallery", image:  UIImage(systemName: "photo"),  handler: tappedLibraryButton),
+            
+            
+            UIAction(title: "Camera", image:  UIImage(systemName: "camera"),  handler: tappedCameraButton)
+        ])
+        return menuItems
+    }
+    
+     func tappedCameraButton(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.sourceType = .camera
         picker.allowsEditing = true
@@ -39,7 +78,7 @@ class ImageViewController: UIViewController, UIContextMenuInteractionDelegate, U
         present(picker, animated: true)
     }
     
-    @IBAction func tappedLibraryButton(_ sender: Any) {
+    func tappedLibraryButton(_ sender: Any) {
         self.imagePickerController.sourceType = .photoLibrary
         self.present(self.imagePickerController, animated: true, completion: nil)
     }
@@ -68,62 +107,18 @@ class ImageViewController: UIViewController, UIContextMenuInteractionDelegate, U
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         DispatchQueue.main.async {
-            if picker.sourceType == .photoLibrary {
-                if let foto = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                    let caminho = FileHelper.SaveToFiles(image: foto)
-                    self.image.image = UIImage(contentsOfFile: FileHelper.GetFilePath(fileName: caminho))
-                    
-                }
-                
-                //image?.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+            
+            if let foto = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                self.image.image = foto
+                let caminho = FileHelper.SaveToFiles(image: foto)
+                self.coreDataPage?.photoImage = caminho
+                try! CoreDataStackNote.saveContext()
             }
-            else {
-                self.image?.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-            }
+            
+            self.delegate?.didSave()
+            picker.dismiss(animated: true, completion: nil)
         }
-       // if picker.sourceType == .photoLibrary {
-           // if let foto = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-              //  let caminho = FileHelper.SaveToFiles(image: foto)
-               // image.image = UIImage(contentsOfFile: FileHelper.GetFilePath(fileName: caminho))
-                
-          //  }
-            
-            //image?.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-       // }
-       // else {
-         //   image?.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-       // }
-        
-        picker.dismiss(animated: true, completion: nil)
     }
-    
-
-    
-    //context menu
-    @IBAction func activePhotoActButton(_ sender: Any) {
-        let menuInteraction1 = UIContextMenuInteraction(delegate: self)
-         activePhotoButton.addInteraction(menuInteraction1)
-        print("helló")
-    }
-    
-    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: nil,
-                                          previewProvider: nil) { _ in
-            
-            let gallery = UIAction(title: "Gallery", image: UIImage(systemName: "photo")) { _ in
-                print("Gallery was selected")
-            }
-            
-            let camera = UIAction(title: "Camera",  image: UIImage(systemName: "camera")) { _ in
-                print("Camera was selected")
-        
-            }
-            
-            return UIMenu(title: "Import Image", children: [gallery, camera])
-        }
-    
-}
-
     
     //botão de voltar
     @IBAction func voltarActButton(_ sender: Any) {

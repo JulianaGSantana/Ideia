@@ -2,7 +2,7 @@
 //  Note+CoreDataClass.swift
 //  Ideia
 //
-//  Created by Juliana Santana on 29/07/21.
+//  Created by Juliana Santana on 02/08/21.
 //
 //
 

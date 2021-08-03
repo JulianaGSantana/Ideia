@@ -29,8 +29,8 @@ class DoubtViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
 //        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width/5).isActive = true
         imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45).isActive = true
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height * 10).isActive = true
-        imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height * 12).isActive = true
+        imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
         imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier:0.8).isActive = true
         label.edgeTo(view: view)
         return view
@@ -55,7 +55,7 @@ class DoubtViewController: UIViewController {
         imageView1.widthAnchor.constraint(equalToConstant: 250).isActive = true
         imageView1.heightAnchor.constraint(equalToConstant: 200).isActive = true
         imageView1.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        imageView1.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
+        imageView1.topAnchor.constraint(equalTo: view.topAnchor, constant: 95).isActive = true
         return view
     }()
     
@@ -78,7 +78,7 @@ class DoubtViewController: UIViewController {
         imageView2.widthAnchor.constraint(equalToConstant: 250).isActive = true
         imageView2.heightAnchor.constraint(equalToConstant: 200).isActive = true
         imageView2.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        imageView2.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
+        imageView2.topAnchor.constraint(equalTo: view.topAnchor, constant: 95).isActive = true
         return view
     }()
     
@@ -101,7 +101,7 @@ class DoubtViewController: UIViewController {
         //imageView3.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height * 4).isActive = true
         imageView3.heightAnchor.constraint(equalToConstant: 200).isActive = true
         imageView3.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        imageView3.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
+        imageView3.topAnchor.constraint(equalTo: view.topAnchor, constant: 95).isActive = true
         view.addSubview(imageView3)
         return view
     }()

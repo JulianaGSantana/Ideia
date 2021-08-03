@@ -21,7 +21,7 @@ class CoreDataStackNote {
     }
     
     static func createNote(noteImage: String) throws -> Note{
-       // guard let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as? Note else {preconditionFailure()}
+        //guard let note = NSEntityDescription.insertNewObject(forEntityName: "Note", into: context) as? Note else {preconditionFailure()}
         let note = Note(context: context)
         note.noteImage = noteImage
         try saveContext()

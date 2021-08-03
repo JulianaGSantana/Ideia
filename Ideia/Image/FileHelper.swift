@@ -12,11 +12,11 @@ class FileHelper {
         return paths[0]
     }
     
-    static func SaveToFiles(image: UIImage) -> String {
-        if let data = image.jpegData(compressionQuality: 1) {
+    static func SaveToFiles(image: UIImage?) -> String {
+        if let data = image?.jpegData(compressionQuality: 1) {
             let directory = GetDocumentDirectory()
             let path = directory.appendingPathComponent("\(UUID().uuidString).jpeg")
-            try! data.write(to: path)
+            try? data.write(to: path)
             return path.lastPathComponent
         }
         

@@ -9,6 +9,7 @@ import UIKit
 
 class NoteViewController: UIViewController {
 
+    @IBOutlet weak var deleteButton: UIButton!
     
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var testeButton: UIButton!
@@ -21,8 +22,6 @@ class NoteViewController: UIViewController {
     //var testes: [String] = [ "note1", "note2"
     //]
     
- 
-    
     
     var selectedIndex: Int = 0
     var cadernos: [String] = ["note1", "note2", "note3", "note4", "note5"]
@@ -33,8 +32,11 @@ class NoteViewController: UIViewController {
         noteCollection.delegate = self
         if try! CoreDataStackNote.getNote().count == 0 {
           _ =  try! CoreDataStackNote.createNote(noteImage: "note1")
-          _ =  try! CoreDataStackNote.createNote(noteImage: "note2")
+         // _ =  try! CoreDataStackNote.createNote(noteImage: "note2")
         }
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+                noteCollection.addGestureRecognizer(longPress)
         // Do any additional setup after loading the view.
     }
 
@@ -48,7 +50,46 @@ class NoteViewController: UIViewController {
         noteCollection.reloadData()
     }
     
+
+    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
+        
+        if sender.state == .began {
+            let touchPoint = sender.location(in: noteCollection)
+            if let indexPath = noteCollection.indexPathForItem(at: touchPoint) {
+                let ac = UIAlertController(title: "Do you really wanna delete this sketch?", message: nil, preferredStyle: .actionSheet)
+                ac.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {
+                    [weak self] action in
+                    
+                    let noteData = try! CoreDataStackNote.getNote()
+                    
+                    
+                    try! CoreDataStackNote.deleteNote(note: noteData[indexPath.row])
+                    
+                    self?.noteCollection.reloadData()
+                    
+                    
+                    
+                }))
+                ac.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+                present(ac, animated: true)
+                
+                
+            }
+            
+        }
+        
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let vc = segue.destination as! PaViewController
+        //tá criando a mesma página, a mesma coisa. Cada caderno está com os mesmos conteúdos
+        vc.testess = [PaCollectionCellContent(image: UIImage(named: "paper")!)]
+        vc.note = try! CoreDataStackNote.getNote() [selectedIndex]
+        
+   }
+    
+}
+
+
 
 extension NoteViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -66,11 +107,10 @@ extension NoteViewController: UICollectionViewDataSource{
         return noteCell
     }
     
-    
-    
 }
 
 extension NoteViewController: UICollectionViewDelegate{
+    
    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
      
@@ -81,16 +121,9 @@ extension NoteViewController: UICollectionViewDelegate{
             
         }
     selectedIndex = indexPath.row
-        
     
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    let vc = segue.destination as! PaViewController
-        //tá criando a mesma página, a mesma coisa. Cada caderno está com os mesmos conteúdos
-        vc.testess = [PaCollectionCellContent(image: UIImage(named: "paper")!)]
-        vc.note = try! CoreDataStackNote.getNote() [selectedIndex]
-        
-   }
+ 
 }
 

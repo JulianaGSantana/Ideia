@@ -33,10 +33,10 @@
 		145FF78926B1C33D007A6829 /* CoreDataNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145FF78826B1C33D007A6829 /* CoreDataNote.swift */; };
 		145FF79026B1C757007A6829 /* CoreDataPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145FF78F26B1C757007A6829 /* CoreDataPage.swift */; };
 		145FF79226B31CD1007A6829 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145FF79126B31CD1007A6829 /* CoreDataStack.swift */; };
-		145FF79726B31DF4007A6829 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145FF79326B31DF4007A6829 /* Note+CoreDataClass.swift */; };
-		145FF79826B31DF4007A6829 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145FF79426B31DF4007A6829 /* Note+CoreDataProperties.swift */; };
-		145FF79926B31DF4007A6829 /* Page+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145FF79526B31DF4007A6829 /* Page+CoreDataClass.swift */; };
-		145FF79A26B31DF4007A6829 /* Page+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145FF79626B31DF4007A6829 /* Page+CoreDataProperties.swift */; };
+		1470B2CF26B8AC010017A1DB /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1470B2CB26B8AC010017A1DB /* Note+CoreDataClass.swift */; };
+		1470B2D026B8AC010017A1DB /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1470B2CC26B8AC010017A1DB /* Note+CoreDataProperties.swift */; };
+		1470B2D126B8AC010017A1DB /* Page+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1470B2CD26B8AC010017A1DB /* Page+CoreDataClass.swift */; };
+		1470B2D226B8AC010017A1DB /* Page+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1470B2CE26B8AC010017A1DB /* Page+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,10 +68,10 @@
 		145FF78826B1C33D007A6829 /* CoreDataNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataNote.swift; sourceTree = "<group>"; };
 		145FF78F26B1C757007A6829 /* CoreDataPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPage.swift; sourceTree = "<group>"; };
 		145FF79126B31CD1007A6829 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		145FF79326B31DF4007A6829 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		145FF79426B31DF4007A6829 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		145FF79526B31DF4007A6829 /* Page+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataClass.swift"; sourceTree = "<group>"; };
-		145FF79626B31DF4007A6829 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1470B2CB26B8AC010017A1DB /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1470B2CC26B8AC010017A1DB /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1470B2CD26B8AC010017A1DB /* Page+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1470B2CE26B8AC010017A1DB /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Page+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,10 +88,10 @@
 		140A2D7426A1FB4A00B439E6 = {
 			isa = PBXGroup;
 			children = (
-				145FF79326B31DF4007A6829 /* Note+CoreDataClass.swift */,
-				145FF79426B31DF4007A6829 /* Note+CoreDataProperties.swift */,
-				145FF79526B31DF4007A6829 /* Page+CoreDataClass.swift */,
-				145FF79626B31DF4007A6829 /* Page+CoreDataProperties.swift */,
+				1470B2CB26B8AC010017A1DB /* Note+CoreDataClass.swift */,
+				1470B2CC26B8AC010017A1DB /* Note+CoreDataProperties.swift */,
+				1470B2CD26B8AC010017A1DB /* Page+CoreDataClass.swift */,
+				1470B2CE26B8AC010017A1DB /* Page+CoreDataProperties.swift */,
 				145FF78026B1C278007A6829 /* Model.xcdatamodeld */,
 				140A2D7F26A1FB4A00B439E6 /* Ideia */,
 				14569C7226A5B92C0040C294 /* Assets */,
@@ -273,12 +273,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				145FF79A26B31DF4007A6829 /* Page+CoreDataProperties.swift in Sources */,
+				1470B2D226B8AC010017A1DB /* Page+CoreDataProperties.swift in Sources */,
 				145FF77226AF4C78007A6829 /* UILabel.swift in Sources */,
 				145FF77B26AF725F007A6829 /* ImageViewController.swift in Sources */,
 				14569C8926A727C60040C294 /* NoteCollectionCell.swift in Sources */,
 				145FF79226B31CD1007A6829 /* CoreDataStack.swift in Sources */,
-				145FF79826B31DF4007A6829 /* Note+CoreDataProperties.swift in Sources */,
+				1470B2D026B8AC010017A1DB /* Note+CoreDataProperties.swift in Sources */,
 				14569C8526A720800040C294 /* NoteViewController.swift in Sources */,
 				14569C7826A6155F0040C294 /* Idea.swift in Sources */,
 				144D69E726A9E26F00305148 /* PaCollectionCell.swift in Sources */,
@@ -296,9 +296,9 @@
 				140A2D8126A1FB4A00B439E6 /* AppDelegate.swift in Sources */,
 				144D69E526A9DE2100305148 /* PaViewController.swift in Sources */,
 				140A2D8326A1FB4A00B439E6 /* SceneDelegate.swift in Sources */,
-				145FF79726B31DF4007A6829 /* Note+CoreDataClass.swift in Sources */,
+				1470B2CF26B8AC010017A1DB /* Note+CoreDataClass.swift in Sources */,
 				145FF77F26B084D2007A6829 /* FileHelper.swift in Sources */,
-				145FF79926B31DF4007A6829 /* Page+CoreDataClass.swift in Sources */,
+				1470B2D126B8AC010017A1DB /* Page+CoreDataClass.swift in Sources */,
 				145FF76926AB076A007A6829 /* HapticsManagerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
